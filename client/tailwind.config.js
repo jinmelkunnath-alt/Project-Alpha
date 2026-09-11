@@ -38,6 +38,14 @@ export default {
           'Consolas',
           'monospace',
         ],
+        serif: [
+          'Newsreader',
+          'Instrument Serif',
+          'Georgia',
+          'Cambria',
+          'Times New Roman',
+          'serif',
+        ],
       },
       letterSpacing: {
         widest2: '0.18em',
