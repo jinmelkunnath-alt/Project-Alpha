@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: #06080a;
+  color: #e8ecf2;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Atmospheric, near-black canvas with a restrained emerald glow. */
+.app-bg {
+  background:
+    radial-gradient(1100px 700px at 86% -14%, rgba(52, 211, 153, 0.10), transparent 55%),
+    radial-gradient(900px 640px at -10% 116%, rgba(94, 234, 212, 0.07), transparent 55%),
+    #07090d;
+}
+
+@layer components {
+  .glass {
+    @apply rounded-2xl border border-white/[0.07] backdrop-blur-xl;
+    background-color: rgba(255, 255, 255, 0.025);
+    background-image: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.05) 0%,
+      rgba(255, 255, 255, 0.012) 100%
+    );
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.05),
+      0 24px 60px -40px rgba(0, 0, 0, 0.9);
+  }
+
+  .glass-soft {
+    @apply rounded-xl border border-white/[0.06] bg-white/[0.02];
+  }
+
+  .panel-title {
+    @apply text-[11px] font-medium uppercase tracking-[0.18em] text-alpha-faint;
+  }
+
+  .nav-link {
+    @apply flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-alpha-muted transition-all duration-200 hover:bg-white/[0.03] hover:text-alpha-ink;
+  }
+
+  .nav-link-active {
+    @apply bg-white/[0.05] text-alpha-ink shadow-[inset_2px_0_0_0_rgba(52,211,153,0.7),inset_0_0_0_1px_rgba(255,255,255,0.06)];
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-alpha-accent px-4 py-2 text-sm font-medium text-[#04130d] transition-colors hover:bg-alpha-accent/90 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-white/10 px-4 py-2 text-sm font-medium text-alpha-ink transition-colors hover:bg-white/[0.04];
+  }
+
+  .input-field {
+    @apply w-full rounded-lg border border-white/10 bg-black/30 px-3 py-2 text-sm text-alpha-ink placeholder:text-alpha-faint focus:border-alpha-accent/60 focus:outline-none focus:ring-1 focus:ring-alpha-accent/40;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.03] px-2.5 py-1 text-[11px] font-medium text-alpha-muted;
+  }
+}
+
+/* Thin, restrained scrollbars. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.12) transparent;
+}
+*::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+*::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+  background-clip: padding-box;
+}
+
+@keyframes alpha-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.82);
+  }
+}
+.pulse-dot {
+  animation: alpha-pulse 2.4s ease-in-out infinite;
+}
+
+/* Animated ring for the active analysis step. */
+@keyframes alpha-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(52, 211, 153, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(52, 211, 153, 0);
+  }
+}
+.ring-pulse {
+  animation: alpha-ring 1.8s ease-out infinite;
+}
+
+@keyframes alpha-rise {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.rise {
+  animation: alpha-rise 0.35s ease-out both;
+}
+
+/* One-shot emerald glow when an analysis run completes. */
+@keyframes alpha-complete {
+  0% {
+    box-shadow:
+      0 0 0 1px rgba(52, 211, 153, 0.5),
+      0 0 50px 0 rgba(52, 211, 153, 0.35);
+  }
+  100% {
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.04),
+      0 24px 60px -40px rgba(0, 0, 0, 0.9);
+  }
+}
+.alpha-complete {
+  animation: alpha-complete 2.4s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
