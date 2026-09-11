@@ -21,16 +21,16 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* Atmospheric cosmic canvas with the emerald aurora and mountain beacon artwork */
+/* Atmospheric cosmic canvas matching Image 2 with emerald planet arc and deep space */
 .app-bg {
-  background-color: #05070a;
+  background-color: #040608;
   background-image:
-    radial-gradient(1000px 600px at 80% 85%, rgba(5, 7, 10, 0.1) 0%, rgba(5, 7, 10, 0.75) 65%, #05070a 100%),
-    linear-gradient(180deg, rgba(5, 7, 10, 0.65) 0%, rgba(5, 7, 10, 0.3) 40%, rgba(5, 7, 10, 0.85) 100%),
-    linear-gradient(90deg, rgba(5, 7, 10, 0.92) 0%, rgba(5, 7, 10, 0.7) 35%, rgba(5, 7, 10, 0.35) 60%, rgba(5, 7, 10, 0.2) 100%),
+    radial-gradient(1100px 700px at 50% 50%, rgba(4, 6, 8, 0.25) 0%, rgba(4, 6, 8, 0.7) 65%, #040608 100%),
+    linear-gradient(180deg, rgba(4, 6, 8, 0.5) 0%, rgba(4, 6, 8, 0.15) 40%, rgba(4, 6, 8, 0.75) 100%),
+    linear-gradient(90deg, rgba(4, 6, 8, 0.2) 0%, rgba(4, 6, 8, 0.45) 40%, rgba(4, 6, 8, 0.75) 100%),
     url('/alpha-bg.jpg');
   background-size: cover;
-  background-position: center right;
+  background-position: left center;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
@@ -150,6 +150,55 @@ body {
 *::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.2);
   background-clip: padding-box;
+}
+
+/* Ambient Animated Cosmic Aurora Drift */
+@keyframes aurora-drift-1 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(55px, -35px, 0) scale(1.12);
+  }
+  66% {
+    transform: translate3d(-35px, 25px, 0) scale(0.94);
+  }
+}
+
+@keyframes aurora-drift-2 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  40% {
+    transform: translate3d(-45px, -45px, 0) scale(1.1);
+  }
+  75% {
+    transform: translate3d(35px, 20px, 0) scale(0.95);
+  }
+}
+
+@keyframes aurora-drift-3 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(30px, 45px, 0) scale(1.15);
+  }
+}
+
+.aurora-orb-1 {
+  animation: aurora-drift-1 24s ease-in-out infinite;
+  will-change: transform;
+}
+
+.aurora-orb-2 {
+  animation: aurora-drift-2 28s ease-in-out infinite;
+  will-change: transform;
+}
+
+.aurora-orb-3 {
+  animation: aurora-drift-3 20s ease-in-out infinite;
+  will-change: transform;
 }
 
 @keyframes alpha-pulse {

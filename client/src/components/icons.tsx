@@ -409,58 +409,77 @@ export function IconClaudeAsterisk({ size = 24, className = '', color = '#d97757
   );
 }
 
-// Official Project Alpha Emblem: Glowing chevron with central 4-pointed diamond star flare
-export function IconAlphaEmblem({ size = 32, className = '' }: { size?: number; className?: string }) {
-  const gradId = 'alpha-emblem-grad';
+// Official Project Alpha Diamond: Glowing 4-pointed diamond star flare from the logo
+export function IconAlphaDiamond({
+  size = 24,
+  className = '',
+  color = '#2dd4bf',
+}: {
+  size?: number;
+  className?: string;
+  color?: string;
+}) {
+  const safeId = color.replace(/[^a-zA-Z0-9]/g, '');
   return (
     <svg
       width={size}
       height={size}
-      viewBox="0 0 100 100"
+      viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={`shrink-0 ${className}`}
+      className={`shrink-0 drop-shadow-[0_0_10px_rgba(45,212,191,0.65)] ${className}`}
     >
       <defs>
-        <linearGradient id={`${gradId}-cyan`} x1="15%" y1="0%" x2="85%" y2="100%">
-          <stop offset="0%" stopColor="#a7f3d0" />
-          <stop offset="35%" stopColor="#2dd4bf" />
-          <stop offset="75%" stopColor="#059669" />
-          <stop offset="100%" stopColor="#022c22" />
-        </linearGradient>
-        <linearGradient id={`${gradId}-stroke`} x1="50%" y1="0%" x2="50%" y2="100%">
-          <stop offset="0%" stopColor="#ecfdf5" />
-          <stop offset="40%" stopColor="#5eead4" />
-          <stop offset="100%" stopColor="#047857" />
-        </linearGradient>
-        <radialGradient id={`${gradId}-glow`} cx="50%" cy="58%" r="45%">
-          <stop offset="0%" stopColor="rgba(45, 212, 191, 0.45)" />
-          <stop offset="60%" stopColor="rgba(52, 211, 153, 0.15)" />
-          <stop offset="100%" stopColor="transparent" />
+        <radialGradient id={`alpha-diamond-glow-${safeId}`} cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#ffffff" />
+          <stop offset="35%" stopColor={color} />
+          <stop offset="70%" stopColor={color} stopOpacity="0.4" />
+          <stop offset="100%" stopColor={color} stopOpacity="0" />
         </radialGradient>
+        <linearGradient id={`alpha-diamond-grad-${safeId}`} x1="10%" y1="0%" x2="90%" y2="100%">
+          <stop offset="0%" stopColor="#ffffff" />
+          <stop offset="40%" stopColor={color} />
+          <stop offset="100%" stopColor="#14b8a6" />
+        </linearGradient>
       </defs>
 
-      {/* Ambient glow backdrop */}
-      <circle cx="50" cy="50" r="46" fill={`url(#${gradId}-glow)`} />
+      {/* Radial soft halo glow */}
+      <circle cx="12" cy="12" r="10" fill={`url(#alpha-diamond-glow-${safeId})`} opacity="0.65" />
 
-      {/* Main Chevron Peak */}
+      {/* 4-pointed curved starburst / diamond flare matching the logo's center */}
       <path
-        d="M50 10L14 62H32.5L50 36.5L67.5 62H86L50 10Z"
-        fill={`url(#${gradId}-cyan)`}
-        stroke={`url(#${gradId}-stroke)`}
-        strokeWidth="1.5"
-        strokeLinejoin="round"
-        className="drop-shadow-[0_0_12px_rgba(45,212,191,0.6)]"
+        d="M12 2.5 Q12 12 21.5 12 Q12 12 12 21.5 Q12 12 2.5 12 Q12 12 12 2.5 Z"
+        fill={`url(#alpha-diamond-grad-${safeId})`}
       />
 
-      {/* Central 4-pointed diamond star flare */}
-      <path
-        d="M50 42 Q50 60 38 60 Q50 60 50 78 Q50 60 62 60 Q50 60 50 42 Z"
-        fill="#ffffff"
-        className="drop-shadow-[0_0_8px_rgba(255,255,255,0.9)]"
-      />
-      <circle cx="50" cy="60" r="2.5" fill="#ffffff" />
+      {/* Central brilliant white spark core */}
+      <circle cx="12" cy="12" r="2.2" fill="#ffffff" className="drop-shadow-[0_0_4px_#ffffff]" />
     </svg>
+  );
+}
+
+// Official Project Alpha Emblem: The official logo image with cyan neon glow & screen blending
+export function IconAlphaEmblem({
+  size = 32,
+  className = '',
+}: {
+  size?: number;
+  className?: string;
+}) {
+  return (
+    <div
+      style={{ width: size, height: size }}
+      className={`relative inline-flex items-center justify-center shrink-0 select-none ${className}`}
+    >
+      <img
+        src="/alpha-logo.png"
+        alt="Project Alpha Logo"
+        width={size}
+        height={size}
+        className="w-full h-full object-contain rounded-md mix-blend-screen drop-shadow-[0_0_14px_rgba(45,212,191,0.65)] pointer-events-none"
+        loading="eager"
+      />
+    </div>
   );
 }
 

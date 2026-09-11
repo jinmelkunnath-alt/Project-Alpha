@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import Sidebar from './Sidebar';
-import { IconMenu, IconLightning, IconUsers, IconCheck } from './icons';
+import AnimatedBackground from './AnimatedBackground';
+import { IconMenu, IconLightning, IconUsers, IconCheck, IconAlphaEmblem } from './icons';
 
 export default function Layout() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -21,6 +22,9 @@ export default function Layout() {
 
   return (
     <div className="flex h-screen overflow-hidden app-bg text-alpha-ink relative">
+      {/* Animated Cosmic Background Layer */}
+      <AnimatedBackground />
+
       {/* Desktop sidebar with collapse support */}
       <div className="hidden md:flex h-full">
         <Sidebar

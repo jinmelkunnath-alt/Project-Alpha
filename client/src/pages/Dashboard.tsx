@@ -16,9 +16,6 @@ import {
   IconPlus,
   IconChevronDown,
   IconCheck,
-  IconClaudeAsterisk,
-  IconAlphaEmblem,
-  ProjectAlphaBrandLockup,
 } from '../components/icons';
 
 interface PresetOption {
@@ -55,44 +52,6 @@ const PRESETS: PresetOption[] = [
   },
 ];
 
-interface CatchyPhrase {
-  text: string;
-  iconColor: string;
-}
-
-const CATCHY_PHRASES: CatchyPhrase[] = [
-  { text: 'Hello, night owl', iconColor: '#d97757' },
-  { text: "What's on the line today?", iconColor: '#34d399' },
-  { text: 'Ready to challenge the consensus?', iconColor: '#d97757' },
-  { text: 'Where being wrong is expensive.', iconColor: '#f87171' },
-  { text: 'Pressure-test your biggest bet.', iconColor: '#38bdf8' },
-  { text: "Don't just decide. Make it survive the future.", iconColor: '#34d399' },
-  { text: 'Second-guess your best assumption.', iconColor: '#fbbf24' },
-  { text: 'Think in decades. Commit today.', iconColor: '#a78bfa' },
-  { text: 'What door cannot be unopened?', iconColor: '#d97757' },
-  { text: 'What if your competitor moves first?', iconColor: '#f87171' },
-  { text: 'Stress-test before you commit.', iconColor: '#34d399' },
-  { text: 'Hunt for the hidden blind spot.', iconColor: '#e09f3e' },
-  { text: 'Welcome back, strategist.', iconColor: '#34d399' },
-  { text: 'Good morning, visionary.', iconColor: '#e09f3e' },
-  { text: 'Good evening, architect.', iconColor: '#e07a5f' },
-];
-
-function getInitialPhraseIndex(): number {
-  const hour = new Date().getHours();
-  // Late night (10 PM - 5 AM): start with 'Hello, night owl'
-  if (hour >= 22 || hour < 5) {
-    return 0; // 'Hello, night owl'
-  }
-  if (hour >= 5 && hour < 12) {
-    return 13; // 'Good morning, visionary.'
-  }
-  if (hour >= 17 && hour < 22) {
-    return 14; // 'Good evening, architect.'
-  }
-  return Math.floor(Math.random() * CATCHY_PHRASES.length);
-}
-
 export default function Dashboard() {
   const navigate = useNavigate();
   const { setActiveDecision } = useApp();
@@ -103,22 +62,6 @@ export default function Dashboard() {
   const [attachedFiles, setAttachedFiles] = useState<File[]>([]);
   const [showPlusMenu, setShowPlusMenu] = useState(false);
   const [showGuide, setShowGuide] = useState(false);
-  const [phraseIndex, setPhraseIndex] = useState(getInitialPhraseIndex);
-  const [phraseKey, setPhraseKey] = useState(0);
-
-  // Auto-rotate catchy phrases every 6.5 seconds
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setPhraseIndex((prev) => (prev + 1) % CATCHY_PHRASES.length);
-      setPhraseKey((k) => k + 1);
-    }, 6500);
-    return () => clearInterval(timer);
-  }, []);
-
-  const cyclePhrase = () => {
-    setPhraseIndex((prev) => (prev + 1) % CATCHY_PHRASES.length);
-    setPhraseKey((k) => k + 1);
-  };
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
@@ -227,57 +170,27 @@ export default function Dashboard() {
 
   return (
     <div className="relative flex min-h-[calc(100vh-2rem)] flex-col items-center justify-center px-4 pb-24 pt-16 sm:px-8">
-      {/* Upper-Right Viewport Branding (Matches reference image) */}
-      <div className="pointer-events-none fixed right-8 top-20 hidden flex-col items-center gap-2.5 text-alpha-faint lg:flex select-none z-10">
-        {['BETTER', 'QUESTIONS', 'BRIGHTER', 'TOMORROWS'].map((w) => (
-          <span key={w} className="text-[10px] font-semibold uppercase tracking-[0.34em] text-white/40">
-            {w}
-          </span>
-        ))}
-        <span className="mt-1 h-[2px] w-8 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.8)]" />
-      </div>
-
       {/* Center Hero Content Container */}
       <div className="w-full max-w-3xl flex flex-col items-center">
-        {/* Official Project Alpha Brand Lockup */}
-        <div className="mb-2 transition-transform hover:scale-105 duration-300">
-          <ProjectAlphaBrandLockup size="md" showTagline={true} />
-        </div>
+        {/* Subtle Minimal Brand Label matching reference */}
+        <p className="text-[11px] sm:text-xs font-semibold tracking-[0.4em] text-alpha-faint uppercase text-center mb-3 select-none">
+          PROJECT ALPHA
+        </p>
 
         {/* Main Headline */}
-        <h1 className="mt-4 text-center text-4xl sm:text-5xl lg:text-[3.35rem] font-bold leading-[1.12] tracking-tight text-white">
+        <h1 className="text-center text-4xl sm:text-5xl lg:text-[3.35rem] font-bold leading-[1.14] tracking-tight text-white">
           What decision are you
           <br />
-          <span className="bg-gradient-to-r from-[#2dd4bf] via-[#34d399] to-[#86efac] bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(45,212,191,0.38)]">
+          <span className="text-[#38e8ba] drop-shadow-[0_0_30px_rgba(56,232,186,0.35)]">
             trying to make?
           </span>
         </h1>
 
         {/* Subtitle */}
         <p className="mx-auto mt-4 max-w-xl text-center text-xs sm:text-sm leading-relaxed text-alpha-muted">
-          Alpha investigates the evidence, challenges assumptions, and stress-tests your
-          decision before you commit.
+          Alpha investigates the evidence, challenges assumptions,
+          <br className="hidden sm:inline" /> and stress-tests your decision before you commit.
         </p>
-
-        {/* Dynamic Claude-style Catchy Greeting / Prompt Banner */}
-        <div className="mt-8 -mb-3 flex items-center justify-center">
-          <button
-            type="button"
-            onClick={cyclePhrase}
-            className="group flex items-center justify-center gap-3.5 px-4 py-2 rounded-2xl transition-all duration-300 hover:bg-white/[0.04] cursor-pointer"
-            title="Click to shuffle phrase"
-          >
-            <span className="transition-transform duration-500 ease-out group-hover:rotate-90 group-active:scale-90 shrink-0">
-              <IconClaudeAsterisk size={28} color={CATCHY_PHRASES[phraseIndex].iconColor} />
-            </span>
-            <span
-              key={phraseKey}
-              className="font-serif text-2xl sm:text-3xl lg:text-[32px] text-[#eae6e1] font-normal tracking-[-0.018em] select-none transition-all duration-300 animate-in fade-in slide-in-from-bottom-2"
-            >
-              {CATCHY_PHRASES[phraseIndex].text}
-            </span>
-          </button>
-        </div>
 
         {/* Executive Decision Input Capsule */}
         <div className="glass-capsule relative mt-8 w-full p-4 sm:p-5">
