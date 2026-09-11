@@ -309,3 +309,212 @@ export function IconRocket(props: IconProps) {
     </svg>
   );
 }
+
+export function IconChevronDown(props: IconProps) {
+  return (
+    <svg {...base(props)}>
+      <path d="m6 9 6 6 6-6" />
+    </svg>
+  );
+}
+
+export function IconLightning(props: IconProps) {
+  return (
+    <svg {...base(props)}>
+      <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" />
+    </svg>
+  );
+}
+
+export function IconUsers(props: IconProps) {
+  return (
+    <svg {...base(props)}>
+      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+    </svg>
+  );
+}
+
+export function IconLightbulb(props: IconProps) {
+  return (
+    <svg {...base(props)}>
+      <path d="M9 18h6M10 22h4" />
+      <path d="M12 2a7 7 0 0 0-7 7c0 2.6 1.4 4.8 3.5 6h7c2.1-1.2 3.5-3.4 3.5-6a7 7 0 0 0-7-7z" />
+    </svg>
+  );
+}
+
+export function IconTarget(props: IconProps) {
+  return (
+    <svg {...base(props)}>
+      <circle cx="12" cy="12" r="10" />
+      <circle cx="12" cy="12" r="6" />
+      <circle cx="12" cy="12" r="2" />
+    </svg>
+  );
+}
+
+export function IconRupee(props: IconProps) {
+  return (
+    <svg {...base(props)}>
+      <path d="M6 3h12M6 8h12M6 13l7.5 8M6 13h3a4 4 0 0 0 0-8" />
+    </svg>
+  );
+}
+
+export function IconAlphaPeak(props: IconProps) {
+  return (
+    <svg {...base(props)} viewBox="0 0 24 24" fill="currentColor" stroke="none">
+      {/* Sleek lambda / stylized chevron A logo with emerald gradient compatibility */}
+      <path d="M12.0001 2.5L2.80005 20.5H6.90005L12.0001 10.3L17.1001 20.5H21.2001L12.0001 2.5ZM12.0001 13.8L9.50005 18.8H14.5001L12.0001 13.8Z" />
+    </svg>
+  );
+}
+
+export function IconChevronLeft(props: IconProps) {
+  return (
+    <svg {...base(props)}>
+      <path d="m15 18-6-6 6-6" />
+    </svg>
+  );
+}
+
+export function IconPanelLeft(props: IconProps) {
+  return (
+    <svg {...base(props)}>
+      <rect width="18" height="18" x="3" y="3" rx="2" />
+      <path d="M9 3v18" />
+    </svg>
+  );
+}
+
+export function IconClaudeAsterisk({ size = 24, className = '', color = '#d97757' }: { size?: number; className?: string; color?: string }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      {/* 8-pointed rounded ray starburst matching Claude's icon */}
+      <line x1="12" y1="2" x2="12" y2="22" stroke={color} strokeWidth="2.6" strokeLinecap="round" />
+      <line x1="2" y1="12" x2="22" y2="12" stroke={color} strokeWidth="2.6" strokeLinecap="round" />
+      <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" stroke={color} strokeWidth="2.6" strokeLinecap="round" />
+      <line x1="4.93" y1="19.07" x2="19.07" y2="4.93" stroke={color} strokeWidth="2.6" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+// Official Project Alpha Emblem: Glowing chevron with central 4-pointed diamond star flare
+export function IconAlphaEmblem({ size = 32, className = '' }: { size?: number; className?: string }) {
+  const gradId = 'alpha-emblem-grad';
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 100 100"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={`shrink-0 ${className}`}
+    >
+      <defs>
+        <linearGradient id={`${gradId}-cyan`} x1="15%" y1="0%" x2="85%" y2="100%">
+          <stop offset="0%" stopColor="#a7f3d0" />
+          <stop offset="35%" stopColor="#2dd4bf" />
+          <stop offset="75%" stopColor="#059669" />
+          <stop offset="100%" stopColor="#022c22" />
+        </linearGradient>
+        <linearGradient id={`${gradId}-stroke`} x1="50%" y1="0%" x2="50%" y2="100%">
+          <stop offset="0%" stopColor="#ecfdf5" />
+          <stop offset="40%" stopColor="#5eead4" />
+          <stop offset="100%" stopColor="#047857" />
+        </linearGradient>
+        <radialGradient id={`${gradId}-glow`} cx="50%" cy="58%" r="45%">
+          <stop offset="0%" stopColor="rgba(45, 212, 191, 0.45)" />
+          <stop offset="60%" stopColor="rgba(52, 211, 153, 0.15)" />
+          <stop offset="100%" stopColor="transparent" />
+        </radialGradient>
+      </defs>
+
+      {/* Ambient glow backdrop */}
+      <circle cx="50" cy="50" r="46" fill={`url(#${gradId}-glow)`} />
+
+      {/* Main Chevron Peak */}
+      <path
+        d="M50 10L14 62H32.5L50 36.5L67.5 62H86L50 10Z"
+        fill={`url(#${gradId}-cyan)`}
+        stroke={`url(#${gradId}-stroke)`}
+        strokeWidth="1.5"
+        strokeLinejoin="round"
+        className="drop-shadow-[0_0_12px_rgba(45,212,191,0.6)]"
+      />
+
+      {/* Central 4-pointed diamond star flare */}
+      <path
+        d="M50 42 Q50 60 38 60 Q50 60 50 78 Q50 60 62 60 Q50 60 50 42 Z"
+        fill="#ffffff"
+        className="drop-shadow-[0_0_8px_rgba(255,255,255,0.9)]"
+      />
+      <circle cx="50" cy="60" r="2.5" fill="#ffffff" />
+    </svg>
+  );
+}
+
+// Full Brand Lockup with geometric chevron letters
+export function ProjectAlphaBrandLockup({
+  size = 'md',
+  showTagline = true,
+  className = '',
+}: {
+  size?: 'sm' | 'md' | 'lg';
+  showTagline?: boolean;
+  className?: string;
+}) {
+  const isSm = size === 'sm';
+  const isLg = size === 'lg';
+
+  return (
+    <div className={`flex flex-col items-center select-none ${className}`}>
+      {/* Emblem */}
+      <IconAlphaEmblem size={isSm ? 32 : isLg ? 64 : 44} />
+
+      {/* PROJECT */}
+      <p className={`font-semibold tracking-[0.42em] uppercase text-alpha-muted ${isSm ? 'text-[8px] mt-1' : isLg ? 'text-xs mt-3' : 'text-[10px] mt-2'}`}>
+        PROJECT
+      </p>
+
+      {/* ALPHA with Chevron A's */}
+      <div className={`font-bold tracking-[0.24em] text-white flex items-center gap-1.5 ${isSm ? 'text-base' : isLg ? 'text-4xl' : 'text-xl'}`}>
+        {/* Chevron A */}
+        <span className="text-emerald-400 drop-shadow-[0_0_15px_rgba(52,211,153,0.7)]">Λ</span>
+        <span>L</span>
+        <span>P</span>
+        <span>H</span>
+        {/* Chevron A */}
+        <span className="text-emerald-400 drop-shadow-[0_0_15px_rgba(52,211,153,0.7)]">Λ</span>
+      </div>
+
+      {showTagline && (
+        <>
+          {/* Luminous Divider Bar */}
+          <div className="relative my-1.5 flex items-center justify-center w-full max-w-[180px]">
+            <span className="h-[1px] w-full bg-gradient-to-r from-transparent via-emerald-400 to-transparent shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
+            <span className="absolute h-1.5 w-1.5 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.9)]" />
+          </div>
+
+          <p className="text-[8px] tracking-[0.3em] font-medium uppercase text-emerald-300/80">
+            A BRIGHTER TOMORROW
+          </p>
+        </>
+      )}
+    </div>
+  );
+}
+
+
+
+
