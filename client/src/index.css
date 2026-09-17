@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 html,
@@ -14,143 +14,127 @@ body,
 
 body {
   margin: 0;
-  background-color: #06080a;
-  color: #e8ecf2;
+  background-color: #f8fafc;
+  color: #0f172a;
   font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-/* Atmospheric cosmic canvas matching Image 2 with emerald planet arc and deep space */
+/* Premium silk-weave light backdrop */
 .app-bg {
-  background-color: #040608;
+  background-color: #f7f9fc;
   background-image:
-    radial-gradient(1100px 700px at 50% 50%, rgba(4, 6, 8, 0.25) 0%, rgba(4, 6, 8, 0.7) 65%, #040608 100%),
-    linear-gradient(180deg, rgba(4, 6, 8, 0.5) 0%, rgba(4, 6, 8, 0.15) 40%, rgba(4, 6, 8, 0.75) 100%),
-    linear-gradient(90deg, rgba(4, 6, 8, 0.2) 0%, rgba(4, 6, 8, 0.45) 40%, rgba(4, 6, 8, 0.75) 100%),
-    url('/alpha-bg.jpg');
-  background-size: cover;
-  background-position: left center;
-  background-repeat: no-repeat;
+    radial-gradient(ellipse 120% 80% at 50% -10%, rgba(209, 250, 229, 0.45) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(167, 243, 208, 0.18) 0%, transparent 60%),
+    radial-gradient(circle at 1px 1px, rgba(148, 163, 184, 0.1) 1px, transparent 0);
+  background-size: 100% 100%, 100% 100%, 28px 28px;
   background-attachment: fixed;
 }
 
 @layer components {
-  /* Main hero input container */
+  /* Main hero input container — silk premium */
   .glass-capsule {
-    @apply rounded-3xl border border-white/[0.09] backdrop-blur-2xl transition-all duration-300;
-    background-color: rgba(9, 13, 16, 0.65);
-    background-image: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.05) 0%,
-      rgba(255, 255, 255, 0.01) 100%
-    );
+    @apply rounded-3xl border border-slate-200/80 bg-white/95 backdrop-blur-2xl transition-all duration-300;
     box-shadow:
-      inset 0 1px 1px 0 rgba(255, 255, 255, 0.1),
-      inset 0 -1px 1px 0 rgba(0, 0, 0, 0.4),
-      0 20px 50px -20px rgba(0, 0, 0, 0.8),
-      0 0 40px -15px rgba(52, 211, 153, 0.12);
+      0 1px 0 0 rgba(255,255,255,1) inset,
+      0 4px 24px -4px rgba(15, 23, 42, 0.06),
+      0 16px 48px -12px rgba(15, 23, 42, 0.1),
+      0 0 0 1px rgba(15, 23, 42, 0.03);
   }
 
   .glass-capsule:focus-within {
-    border-color: rgba(52, 211, 153, 0.45);
+    border-color: rgba(5, 150, 105, 0.45);
     box-shadow:
-      inset 0 1px 1px 0 rgba(255, 255, 255, 0.15),
-      0 20px 60px -15px rgba(0, 0, 0, 0.9),
-      0 0 50px -10px rgba(52, 211, 153, 0.3);
+      0 1px 0 0 rgba(255,255,255,1) inset,
+      0 6px 28px -4px rgba(15, 23, 42, 0.08),
+      0 20px 52px -10px rgba(5, 150, 105, 0.12),
+      0 0 0 3px rgba(5, 150, 105, 0.08);
   }
 
-  /* Preset decision suggestion card */
+  /* Preset decision suggestion card — silk premium */
   .glass-card {
-    @apply rounded-2xl border border-white/[0.07] backdrop-blur-xl transition-all duration-300;
-    background-color: rgba(12, 17, 21, 0.55);
-    background-image: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.04) 0%,
-      rgba(255, 255, 255, 0.005) 100%
-    );
+    @apply rounded-2xl border border-slate-200/80 bg-white/90 backdrop-blur-xl transition-all duration-300 text-slate-800;
     box-shadow:
-      inset 0 1px 0 0 rgba(255, 255, 255, 0.06),
-      0 12px 30px -15px rgba(0, 0, 0, 0.7);
+      0 1px 0 0 rgba(255,255,255,0.9) inset,
+      0 1px 4px 0 rgba(15, 23, 42, 0.04),
+      0 4px 16px -4px rgba(15, 23, 42, 0.06);
   }
 
   .glass-card:hover {
-    @apply -translate-y-0.5 border-emerald-500/40 text-white;
-    background-color: rgba(16, 23, 29, 0.75);
+    @apply -translate-y-0.5 border-emerald-400/60 text-slate-900;
     box-shadow:
-      inset 0 1px 0 0 rgba(255, 255, 255, 0.12),
-      0 16px 36px -12px rgba(0, 0, 0, 0.85),
-      0 0 25px -5px rgba(52, 211, 153, 0.25);
+      0 1px 0 0 rgba(255,255,255,0.9) inset,
+      0 4px 20px -4px rgba(5, 150, 105, 0.14),
+      0 12px 36px -8px rgba(5, 150, 105, 0.1);
   }
 
   /* Pill button used in input bar and header */
   .glass-pill {
-    @apply inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1.5 text-xs font-medium text-alpha-muted backdrop-blur-md transition-all duration-200;
+    @apply inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-100/80 px-3 py-1.5 text-xs font-medium text-slate-700 backdrop-blur-md transition-all duration-200;
   }
 
   .glass-pill:hover {
-    @apply border-white/20 bg-white/[0.06] text-white;
+    @apply border-slate-300 bg-slate-200/80 text-slate-900;
   }
 
   .glass-pill-active {
-    @apply border-emerald-500/40 bg-emerald-500/10 text-emerald-300 shadow-[0_0_15px_-3px_rgba(52,211,153,0.3)];
+    @apply border-emerald-500 bg-emerald-50 text-emerald-800 font-semibold shadow-sm;
   }
 
   .glass-soft {
-    @apply rounded-xl border border-white/[0.07] bg-black/40 backdrop-blur-xl;
-    box-shadow:
-      inset 0 1px 0 0 rgba(255, 255, 255, 0.05),
-      0 16px 32px -16px rgba(0, 0, 0, 0.8);
+    @apply rounded-xl border border-slate-200 bg-white shadow-sm;
   }
 
   .panel-title {
-    @apply text-[11px] font-medium uppercase tracking-[0.18em] text-alpha-faint;
+    @apply text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500;
   }
 
   .nav-link {
-    @apply flex items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-medium text-alpha-muted transition-all duration-200 hover:bg-white/[0.04] hover:text-white;
+    @apply flex items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-medium text-slate-600 transition-all duration-200 hover:bg-slate-100 hover:text-slate-900;
   }
 
   .nav-link-active {
-    @apply bg-white/[0.06] text-white shadow-[inset_3px_0_0_0_rgba(52,211,153,0.85),inset_0_0_0_1px_rgba(255,255,255,0.08)];
+    @apply bg-slate-100 text-slate-900 font-bold border-l-2 border-emerald-600 shadow-none;
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-alpha-accent px-4 py-2.5 text-sm font-semibold text-[#04130d] shadow-glow transition-all hover:bg-emerald-300 hover:shadow-[0_0_30px_0_rgba(52,211,153,0.5)] disabled:cursor-not-allowed disabled:opacity-50;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50;
   }
 
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 px-4 py-2.5 text-sm font-medium text-alpha-ink transition-colors hover:bg-white/[0.05];
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50 hover:text-slate-900;
   }
 
   .input-field {
-    @apply w-full rounded-xl border border-white/10 bg-black/40 px-3.5 py-2.5 text-sm text-alpha-ink placeholder:text-alpha-faint focus:border-alpha-accent/60 focus:outline-none focus:ring-1 focus:ring-alpha-accent/40;
+    @apply w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/20;
   }
 
   .chip {
-    @apply inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.03] px-2.5 py-1 text-[11px] font-medium text-alpha-muted;
+    @apply inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-100 px-2.5 py-1 text-[11px] font-medium text-slate-700;
   }
 }
 
 /* Thin, restrained scrollbars. */
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.12) transparent;
+  scrollbar-color: rgba(148, 163, 184, 0.4) transparent;
 }
 *::-webkit-scrollbar {
-  width: 9px;
-  height: 9px;
+  width: 8px;
+  height: 8px;
 }
 *::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(148, 163, 184, 0.4);
   border-radius: 9999px;
   border: 2px solid transparent;
   background-clip: padding-box;
 }
 *::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(100, 116, 139, 0.6);
   background-clip: padding-box;
 }
+
 
 /* Ambient Animated Cosmic Aurora Drift */
 @keyframes aurora-drift-1 {
@@ -263,9 +247,103 @@ body {
   animation: alpha-complete 2.4s ease-out both;
 }
 
+@keyframes shiny-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     animation: none !important;
     transition: none !important;
   }
 }
+
+/* Premium silk sweep shimmer used on hero headline */
+@keyframes silk-sweep {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Soft float-in for hero elements */
+@keyframes float-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.silk-title {
+  animation: float-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.silk-tagline {
+  animation: float-up 0.7s 0.12s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.silk-input {
+  animation: float-up 0.7s 0.22s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.silk-presets {
+  animation: float-up 0.7s 0.34s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Hero background floating ambient orbs */
+@keyframes ambient-drift-1 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(25px, -18px) scale(1.08);
+  }
+}
+
+@keyframes ambient-drift-2 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-30px, 20px) scale(0.94);
+  }
+}
+
+@keyframes ambient-drift-3 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(20px, 25px) scale(1.06);
+  }
+}
+
+@keyframes micro-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.04); }
+}
+
+.animate-ambient-1 {
+  animation: ambient-drift-1 14s ease-in-out infinite;
+}
+
+.animate-ambient-2 {
+  animation: ambient-drift-2 18s ease-in-out infinite;
+}
+
+.animate-ambient-3 {
+  animation: ambient-drift-3 16s ease-in-out infinite;
+}
+
+.animate-micro-pulse {
+  animation: micro-pulse 4s ease-in-out infinite;
+}
+
+

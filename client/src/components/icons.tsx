@@ -36,6 +36,15 @@ export function IconDashboard(props: IconProps) {
   );
 }
 
+export function IconTerminal(props: IconProps) {
+  return (
+    <svg {...base(props)}>
+      <polyline points="4 17 10 11 4 5" />
+      <line x1="12" y1="19" x2="20" y2="19" />
+    </svg>
+  );
+}
+
 export function IconPlus(props: IconProps) {
   return (
     <svg {...base(props)}>
@@ -458,7 +467,7 @@ export function IconAlphaDiamond({
   );
 }
 
-// Official Project Alpha Emblem: The official logo image with cyan neon glow & screen blending
+// Official Project Alpha Emblem: Clean rounded circular emblem without box frame
 export function IconAlphaEmblem({
   size = 32,
   className = '',
@@ -469,14 +478,14 @@ export function IconAlphaEmblem({
   return (
     <div
       style={{ width: size, height: size }}
-      className={`relative inline-flex items-center justify-center shrink-0 select-none ${className}`}
+      className={`relative inline-flex items-center justify-center shrink-0 rounded-full overflow-hidden select-none bg-slate-950 ${className}`}
     >
       <img
         src="/alpha-logo.png"
         alt="Project Alpha Logo"
         width={size}
         height={size}
-        className="w-full h-full object-contain rounded-md mix-blend-screen drop-shadow-[0_0_14px_rgba(45,212,191,0.65)] pointer-events-none"
+        className="w-full h-full object-cover rounded-full scale-115 pointer-events-none"
         loading="eager"
       />
     </div>

@@ -206,7 +206,7 @@ export default function AnalysisWorkspace() {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
         <div className="glass max-w-md p-8 text-center">
-          <span className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-alpha-accent to-alpha-accent-2 text-[#04130d] shadow-glow">
+          <span className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-alpha-accent to-alpha-accent-2 text-[#04130d] shadow-glow">
             <IconAlpha size={24} />
           </span>
           <h2 className="text-xl font-semibold text-alpha-ink">No active decision</h2>
@@ -233,7 +233,7 @@ export default function AnalysisWorkspace() {
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-3">
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-alpha-accent to-alpha-accent-2 text-[#04130d] shadow-glow">
+          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-alpha-accent to-alpha-accent-2 text-[#04130d] shadow-glow">
             <IconAlpha size={20} />
           </span>
           <div className="min-w-0">

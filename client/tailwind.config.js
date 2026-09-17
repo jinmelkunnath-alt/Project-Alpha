@@ -4,19 +4,19 @@ export default {
   theme: {
     extend: {
       colors: {
-        'alpha-bg': '#06080a',
-        'alpha-surface': '#0b0f12',
-        'alpha-panel': 'rgba(255,255,255,0.025)',
-        'alpha-border': 'rgba(255,255,255,0.08)',
-        'alpha-edge': 'rgba(255,255,255,0.05)',
-        'alpha-ink': '#e8ecf2',
-        'alpha-muted': '#8b94a7',
-        'alpha-faint': '#565f72',
-        'alpha-accent': '#34d399',
-        'alpha-accent-2': '#5eead4',
-        'alpha-success': '#34d399',
-        'alpha-warn': '#fbbf24',
-        'alpha-danger': '#f87171',
+        'alpha-bg': '#f8fafc',
+        'alpha-surface': '#ffffff',
+        'alpha-panel': '#f1f5f9',
+        'alpha-border': '#e2e8f0',
+        'alpha-edge': '#cbd5e1',
+        'alpha-ink': '#0f172a',
+        'alpha-muted': '#475569',
+        'alpha-faint': '#64748b',
+        'alpha-accent': '#059669',
+        'alpha-accent-2': '#0d9488',
+        'alpha-success': '#059669',
+        'alpha-warn': '#d97706',
+        'alpha-danger': '#dc2626',
       },
       fontFamily: {
         sans: [
